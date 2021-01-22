@@ -15,14 +15,24 @@ class CreateExperiencesTable extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+
             $table->string('profession');
             $table->string('company');
             $table->dateTime('from');
             $table->dateTime('to');
             $table->text('description');
-            $table->bigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            //$table->bigInteger('user_id');
+           
+           // $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
+        });
+
+        Schema::table('experiences', function(Blueprint $table){    
+            $table->foreign('user_id')
+            ->references('id')->on('users')
+            ->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

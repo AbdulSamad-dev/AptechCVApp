@@ -27,19 +27,20 @@ class HomeController extends Controller
     public function index()
     {
        // dd("asdf");
-        $std    =    Student::all();
+       // $std    =    Student::all();
        //dd($std);
-       foreach($std as $st)
+       /*foreach($std as $st)
        {
            //printf($st->id);
            //printf("\n");
            
        }
+       */
           if(Student::find(Auth::user()->id) == null){
               $std =new Student();
-              //$std->user_id=  2;
+              $std->user_id= Auth::user()->id;
               Student::all();
-             // $std->save();
+              $std->save();
              return view('home')->with('StdData',Student::find(Auth::user()->id));
           }
           
