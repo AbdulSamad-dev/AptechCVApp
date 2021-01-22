@@ -15,8 +15,16 @@
                         
                    <h5> {{ __('Welcome Abdul Samad!') }}</h5>
                 </div>
-                    <h1 class="text-center">Create your CV</h1>
+                    <h1 class="text-center">Curriculum Vitae CV</h1>
                     <p><strong>Note:   * field are required</strong></p>
+                    <h6>Career Objective</h6>
+                    <div class="row">
+                        <div class="col-md-12"> 
+                            <div class="form-group">
+                             <textarea type="text" name="objective" rows="5" id=""   class="form-control" required></textarea>
+                            </div>
+                         </div>
+                    </div>
                     <h5>Personal Information</h5><hr/>
                     <form action="{{ route('insert_cv')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -27,19 +35,53 @@
                         </div>
                         <div class="col-sm-3">
                             <label for="">Batch</label>*
-                             <input type="text" name="batch" id="" class="form-control" required> 
+                            
+                             <select  name="batchid" id="" class="form-control" required>
+                                <option value="">Choose...</option>
+                                <option value="1802A">1802A</option>
+                                <option value="1803E">1803E</option>
+                                <option value="1804F">1804F</option>
+                                <option value="1807F">1807F</option>
+                                <option value="1808A">1808A</option>
+                                <option value="1901A">1901A</option>
+                                <option value="1901F">1901F</option>
+                                <option value="1903B">1903B</option>
+                                <option value="1903E">1903E</option>
+                                <option value="1906F">1906F</option>
+                                <option value="1907B">1907B</option>
+                                <option value="1909A">1909A</option>
+                                <option value="2001A">2001A</option>
+                                <option value="2002E">2002E</option>
+                                <option value="2001F">2001F</option>
+                                <option value="2008A">2008A</option>
+                                <option value="2008E">2008E</option>
+                                <option value="2010F">2010F</option>
+                                <option value="2011B">2011B</option>
+                                <option value="2012F">2012F</option>
+                                <option value="2101F">2101F</option>
+                            </select>
                         </div>
                         <div class="col-sm-3">
                             <label for="">Faculty Name</label>*
-                            <input type="text" name="faculty_name" id="" class="form-control" required> 
+             
+                            <select  name="faculty_name" id="" class="form-control" required>
+                                <option value="">Select...</option>
+                                <option value="Salman Patel">Salman Patel</option>
+                                <option value="Rizwan Alvi">Rizwan Alvi</option>
+                                <option value="Hussain Ahmed">Hussain Ahmed</option>
+                                <option value="Abdul Sami">Abdul Sami</option>
+                                <option value="Gullam Mustafa">Gullam Mustafa</option>
+                                <option value="Danyal Manzoor">Danyal Manzoor</option>
+                                <option value="Abdul Samad">Abdul Samad</option>
+                            </select>
                         </div>
                         <div class="col-sm-3">
                             <label for="">Post applying for</label>*
                             <select name="post_applying_for" id="" class="form-control" required>
                                 <option value="">Choose...</option> 
-                                    <option value="1">Web Developer</option>
-                                    <option value="2">Mobile App Developer</option>
-                                    <option value="3">Graphic Desinger</option>   
+                                    <option value="Web Developer">Web Developer</option>
+                                    <option value="Mobile App Developer">Mobile App Developer</option>
+                                    <option value="Graphic Desinger">Graphic Desinger</option>   
                               </select>      
                         </div>
                     </div>
@@ -78,8 +120,6 @@
                                 <div class="col-sm-4">
                                     <img id="blah" src="./img/avatar.png" alt="no  Image" class="img-thumnail" height="150px" width="150px">   
                                     <input type="file" name="profile_image" id="imgInp" accept=".png,.jpg" required>
- 
-                                
                                 </div>
                                 <div class="col-sm-3"></div>
                             </div>
@@ -89,30 +129,24 @@
                         <div class="col-md-12"> 
                             <div class="form-group">
                                 <label for="">Postal home address</label>
-                             <textarea type="text" name="address" rows="5"  cols="12" id=""   class="form-control" required></textarea>
+                             <textarea type="text" name="address" rows="5"  cols="12" id="" class="form-control" required></textarea>
                             </div>
                          </div>
                     </div>
-
+                   
                     <h5>Education</h5><hr/>
-                    <h6>Career Objective</h6>
-                    <div class="row">
-                        <div class="col-md-12"> 
-                            <div class="form-group">
-                             <textarea type="text" name="objective" rows="5" id=""   class="form-control" required></textarea>
-                            </div>
-                         </div>
-                    </div>
+                    
+                    
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Certifacate</label>
                                 <select name="certifcate" id="certifcate" class="form-control" required>
-                                    <option value=""></option>
-                                    <option value="1">Matric</option>
-                                    <option value="2">Intermediate</option>
-                                    <option value="3">Graduate</option>
-                                    <option value="4">Masters</option>
+                                    <option value="">Choose...</option>
+                                    <option value="Matric">Matric</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Graduate">Graduate</option>
+                                    <option value="Masters">Masters</option>
                                 </select>
                             </div>  
                         </div>
@@ -172,7 +206,7 @@
                             <div class="form-group">
                                 <label for="">Profession</label>
                                 <select name="profession" id="profession" class="form-control" required>
-                                    <option value=""></option>
+                                    <option value="">Choose...</option>
                                     <option value="1">Web Developer</option>
                                     <option value="2">Android Developer</option>
                                     <option value="3">Graphic Designer</option>
@@ -251,17 +285,28 @@
 </div>
 
 <script>
-
-    
     $(function(){
+
+       
 
         $("#still_studing").change(function() {
 
             if(this.checked) {
                 $("#passing_year").prop('disabled', true);
+                $("#passing_year").val("Present");
             }
             else{
                 $("#passing_year").prop('disabled', false);
+            }
+        });
+
+        $("#still_working").change(function() {
+            if(this.checked) {
+                $("#to").prop('disabled', true);
+                $("#to").val("Present");
+            }
+            else{
+                $("#to").prop('disabled', false);
             }
         });
 
@@ -271,38 +316,38 @@
             var certificate =  $("#certifcate").find(':selected').text();
             var institute =  $("#institute").val();
             var passing_year =  $("#passing_year").val();
+               // alert($('#still_studing').is(":checked"));
             
-            if(certificate=="" || institute=="" || passing_year=="")
+            if($('#still_studing').is(":checked"))
             {
+                passing_year = "Presently studding";
+                //alert(passing_year);
+                //console.log(passing_year);
+            }
+        
+            if(certificate=="" || institute=="" || passing_year=="" )
+            {
+               
                 alert("All fields are required");
                 return false;
             }
-        
-            $("#eucation_row").append("<tr><th scope='row'>"+i+"</th><td>"+certificate+"</td><td>"+institute+"</td><td>"+passing_year+"</td><td><button id=btn_add_edu class='btn btn-small btn-danger'>x</button></td></tr>");                   
+            $("#eucation_row").append("<tr><input type='hidden' name='education[]' value="+certificate+"><input type='hidden' name='education[]' value="+institute+"><input type='hidden' name='education[]' value="+passing_year+"><th scope='row'>"+i+"</th><td>"+certificate+"</td><td>"+institute+"</td><td>"+passing_year+"</td><td><button id=btn_add_edu class='btn btn-small btn-danger'>x</button></td></tr>");                   
                                   i++;
              $("option:selected").prop("selected", false)
             $('#institute').val('');
-        
-
         });
+
+
         $("table").on('click','#btn_add_edu',function(){
          // get the current row
         // var currentRow=$(this).closest("tr"); 
          $(this).closest('tr').remove();    
     });
 
-    $("#still_working").change(function() {
-            if(this.checked) {
-                $("#joining_date").prop('disabled', true);
-            }
-            else{
-                $("#joining_date").prop('disabled', false);
-            }
-        });
-         var i=1;
+ 
 
 
-         
+       
         $("#add_experience").on("click",function(){
            // alert("hi"); $("select#certifcate option").filter(":selected").text();
             var profession      =  $("#profession").find(':selected').text();
@@ -310,16 +355,25 @@
             var fromDate        =  $("#from").val();
             var toDate          =  $("#to").val();
             var description     = $("#description").val();
+            //alert($('#still_working').is(":checked"));
 
-            if(profession=="" || company=="" || fromDate=="" || toDate=="" || description=="")
+            if($('#still_working').is(":checked"))
+            {
+                toDate = "Presently working";
+               // alert(toDate);
+                //console.log(passing_year);
+            }
+
+            if(profession=="" || company=="" || fromDate=="" || description=="" || toDate=="" )
             {
                 alert("All fields are required");
                 return false;
             }
-            $("#experience_row").append("<tr><th scope='row'>"+i+"</th><td>"+profession+"</td><td>"+company+"</td><td>"+fromDate+"</td><td>"+toDate+"</td><td>"+description+"</td><td><button id=btn_add_exp class='btn btn-small btn-danger'>x</button></td></tr>");                   
+            $("#experience_row").append("<tr><input type='hidden' name='pro_profession[]' value="+profession+"><input type='hidden' name='pro_company[]' value="+company+"><input type='hidden' name='pro_fromDate[]' value="+fromDate+"><input type='hidden' name='pro_toDate[]' value="+toDate+"><input type='hidden' name='pro_description[]' value="+description+"><th scope='row'>"+i+"</th><td>"+profession+"</td><td>"+company+"</td><td>"+fromDate+"</td><td>"+toDate+"</td><td>"+description+"</td><td><button id=btn_add_exp class='btn btn-small btn-danger'>x</button></td></tr>");                   
                                   i++;
-
-            $("#profession").find(':selected').text("");
+   
+           $("option:selected").prop("selected", false);
+           
             $("#company").val("");
             $("#from").val("");
             $("#to").val("");

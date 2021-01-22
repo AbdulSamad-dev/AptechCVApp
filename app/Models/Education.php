@@ -18,4 +18,4 @@ class Education extends Model
         
     ];
 }
-}
+
