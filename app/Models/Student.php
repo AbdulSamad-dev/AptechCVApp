@@ -4,11 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Student extends Model
 {
     use HasFactory;
 
+    public function education()
+    {
+       // return $this->hasMany('Education');
+    }
     protected $fillable = [
         'user_id',
         'student_id',
@@ -29,7 +34,6 @@ class Student extends Model
     public function user()
     {
 
-        return $this->belongsTo('App\User');
-
+        return $this->belongsTo('User');
     }
 }

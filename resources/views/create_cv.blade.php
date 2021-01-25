@@ -310,7 +310,7 @@
             }
         });
 
-        var i=1;
+        var i=0;
         $("#add_education").on("click",function(){
            // alert("hi"); $("select#certifcate option").filter(":selected").text();
             var certificate =  $("#certifcate").find(':selected').text();
@@ -331,7 +331,8 @@
                 alert("All fields are required");
                 return false;
             }
-            $("#eucation_row").append("<tr><input type='hidden' name='education[]' value="+certificate+"><input type='hidden' name='education[]' value="+institute+"><input type='hidden' name='education[]' value="+passing_year+"><th scope='row'>"+i+"</th><td>"+certificate+"</td><td>"+institute+"</td><td>"+passing_year+"</td><td><button id=btn_add_edu class='btn btn-small btn-danger'>x</button></td></tr>");                   
+  
+            $("#eucation_row").append("<tr><input type='hidden' name=education[certificate"+i+"] value="+certificate+"><input type='hidden' name=education[institute"+i+"] value="+institute+"><input type='hidden' name=education[passing_year"+i+"] value="+passing_year+"><th scope='row'>"+i+"</th><td>"+certificate+"</td><td>"+institute+"</td><td>"+passing_year+"</td><td><button id=btn_add_edu class='btn btn-small btn-danger'>x</button></td></tr>");                   
                                   i++;
              $("option:selected").prop("selected", false)
             $('#institute').val('');
@@ -370,7 +371,7 @@
                 return false;
             }
             $("#experience_row").append("<tr><input type='hidden' name='pro_profession[]' value="+profession+"><input type='hidden' name='pro_company[]' value="+company+"><input type='hidden' name='pro_fromDate[]' value="+fromDate+"><input type='hidden' name='pro_toDate[]' value="+toDate+"><input type='hidden' name='pro_description[]' value="+description+"><th scope='row'>"+i+"</th><td>"+profession+"</td><td>"+company+"</td><td>"+fromDate+"</td><td>"+toDate+"</td><td>"+description+"</td><td><button id=btn_add_exp class='btn btn-small btn-danger'>x</button></td></tr>");                   
-                                  i++;
+                                  
    
            $("option:selected").prop("selected", false);
            

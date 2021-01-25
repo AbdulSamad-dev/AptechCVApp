@@ -55,100 +55,76 @@ class HomeController extends Controller
     }
     public function insert_cv(Request $request)
     {
-    // dd(count($request->edu_certificate));
-       //dd($request->edu_certificate[0]);
-       //$edu_certificate = Input::get('edu_certificate');
-       //$educationArray = array_merge($request->edu_certificate, $request->edu_institute, $request->edu_passing_year);
-       //$experienceArray = array_merge($request->pro_profession, $request->pro_company, $request->pro_fromDate,$request->pro_toDate,$request->pro_description);
-        //dd($educationArray);
-       //dd($experienceArray);
-    
-     dd($request->education);
-          
-            //$education[$i] = array("certificate"=>$request->edu_certificate[$i],"institute"=>$request->edu_institute[$i],"passing_year"=>$request->edu_passing_year[$i]);
-     
+        $student = new Student();
+        $education = new Education();
+        $exeperience = new  Experience();
 
-       // dd($Education);
-
-     
-       $std = new Student();
-       $edu = new Education();
-       $exp = new  Experience();
-
-
-       $user_id = Auth::user()->id;
-       $stdid              = $request->input('student_id');
-       $batchid            = $request->input('batchid');
-       $facultyname        = $request->input('faculty_name');
-       $post_applying      = $request->input('post_applying');
-       $full_name          = $request->input('full_name');
-       $primary_number     = $request->input('primary_number');
-       $other_email        = $request->input('other_email');
-       $secondary_number   = $request->input('secondary_number');
-       $address            = $request->input('address');
-       $imgfile            = $request->file('profile_image');
-       $imgname            = time().'_'.$batchid .'_'.Auth::user()->name.'.'.$imgfile->getClientOriginalExtension();
-       $destinationPath    = public_path('/img');
+        $student_data = Student::find(Auth::user()->id);
       
-       $imgfile->move($destinationPath, $imgname);
-     
-       $std->student_id =  $stdid;
-       $std->batch_id = $batchid;
-       $std->faculty_name = $facultyname;
-       $std->post_apply = $post_applying;
-       $std->full_name = $full_name;
-       $std->other_email = $primary_number;
-       $std->primary_number = $other_email;
-       $std->secondary_number = $secondary_number;
-       $std->post_address = $address;
-       $std->img_path = 'img/'.$imgname;
-       $std->is_build  =1;
-       $std->user_id   =  Auth::user()->id;
-        
+        if(!empty($student_data->user_id) && $student_data->is_build==0)
+        {
+          
+            $student_update = Student::where('user_id',1)->update(['is_build'=>1]);
+            dd("user exists row updated!".$student_update);
 
-       // $std->save();
-       // $edu->save();
-      //  $exp->save();
-       return redirect('home');//->back()->with('msg', 'You cv has been uploaded successfully');   
+              /* //user data is alreday available here you can upate data or leave this data as it is//
+                $imgfile            = $request->file('profile_image');
+                $imgname            = time().'_'.$request->input('batchid') .'_'.Auth::user()->name.'.'.$imgfile->getClientOriginalExtension();
+                $student->user_id            = Auth::user()->id;
+                $student->student_id         = $request->input('student_id');
+                $student->batch_id           = $request->input('batchid');
+                $student->faculty_name       = $request->input('faculty_name');
+                $student->post_apply         = $request->input('post_applying');
+                $student->full_name          = $request->input('full_name');
+                $student->primary_number     = $request->input('primary_number');
+                $student->other_email        = $request->input('other_email');
+                $student->secondary_number   = $request->input('secondary_number');
+                $student->post_address       = $request->input('address');
+                $student->img_path           = 'img/'.$imgname;
+                $student->is_build           = 1;
+                
+                $imgfile->move(public_path('/img'), $imgname);
+                */
+                
+        }
+        else
+        {
+            dd("else");
+        }
+      
+     
+  
+      // return redirect('home');//->back()->with('msg', 'You cv has been uploaded successfully');   
 
     }
+
     public function upload_cv1(Request  $request)
     {
-        $std = Student::find(Auth::user()->id);
+        $student = Student::find(Auth::user()->id);
        
-        $stdid                  = $request->input('student_id');
-        $batchid                = $request->input('batchid');
-        $facultyname            = $request->input('faculty_name');
-        $post_applying          = $request->input('post_applying');
-        $full_name              = $request->input('full_name');
-        $primary_number         = $request->input('primary_number');
-        $other_email            = $request->input('other_email');
-        $secondary_number       = $request->input('secondary_number');
-        $address                = $request->input('address');
+        $student->student_id          = $request->input('student_id');
+        $student->batch_id            = $request->input('batchid');
+        $student->faculty_name        = $request->input('faculty_name');
+        $student->post_apply          = $request->input('post_applying');
+        $student->full_name           = $request->input('full_name');
+        $student->primary_number      = $request->input('primary_number');
+        $student->other_email         = $request->input('other_email');
+        $student->secondary_number    = $request->input('secondary_number');
+        $student->post_address        = $request->input('address');
+       
         $cvfile                 = $request->file('cvupload');
         $imgfile                = $request->file('profile_image');
-        $destinationCvPath      = public_path('/cv');
-        $destinationImgPath     = public_path('/img');
-        $std->student_id        = $stdid;
-        $std->batch_id          = $batchid;
-        $std->faculty_name      = $facultyname;
-        $std->post_apply        = $post_applying;
-        $std->full_name         = $full_name;
-        $std->other_email       = $primary_number;
-        $std->primary_number    = $other_email;
-        $std->secondary_number  = $secondary_number;
-        $std->post_address      = $address;
-        $std->img_path          = 'img/'.$imgname;
-        $std->cv_path           = 'cv/'.$cvname;
-        $std->is_uploaded       = 1;
-        $std->user_id           = Auth::user()->id;
-        $imgname                = time().'_'.$batchid .'_'.Auth::user()->name.'.'.$imgfile->getClientOriginalExtension();
-        $cvname                 = time().'_'.$batchid .'_'.Auth::user()->name.'.'.$cvfile->getClientOriginalExtension();
-        
-        $imgfile->move($destinationImgPath, $imgname);        
-        $cvfile->move($destinationCvPath, $cvname);
+        $imgname                = time().'_'.$request->input('batchid').'_'.Auth::user()->name.'.'.$imgfile->getClientOriginalExtension();
+        $cvname                 = time().'_'.$request->input('batchid').'_'.Auth::user()->name.'.'.$cvfile->getClientOriginalExtension();
+      
+        $student->img_path       = 'img/'.$imgname;
+        $student->cv_path        = 'cv/'.$cvname;
+        $student->is_uploaded    = 1;
+        $student->user_id        = Auth::user()->id;
+        $imgfile->move(public_path('/img'), $imgname);        
+        $cvfile->move(public_path('/cv'), $cvname);
  
-        $std->save();
+        $student->save();
         return redirect('home')->with('msg', 'You cv has been uploaded successfully');   
         
     }
