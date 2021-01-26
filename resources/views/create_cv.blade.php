@@ -360,7 +360,7 @@
 
             if($('#still_working').is(":checked"))
             {
-                toDate = "Presently working";
+                toDate = now();
                // alert(toDate);
                 //console.log(passing_year);
             }
@@ -370,7 +370,7 @@
                 alert("All fields are required");
                 return false;
             }
-            $("#experience_row").append("<tr><input type='hidden' name='pro_profession[]' value="+profession+"><input type='hidden' name='pro_company[]' value="+company+"><input type='hidden' name='pro_fromDate[]' value="+fromDate+"><input type='hidden' name='pro_toDate[]' value="+toDate+"><input type='hidden' name='pro_description[]' value="+description+"><th scope='row'>"+i+"</th><td>"+profession+"</td><td>"+company+"</td><td>"+fromDate+"</td><td>"+toDate+"</td><td>"+description+"</td><td><button id=btn_add_exp class='btn btn-small btn-danger'>x</button></td></tr>");                   
+            $("#experience_row").append("<tr><input type='hidden' name='profession[]' value="+profession+"><input type='hidden' name='company[]' value="+company+"><input type='hidden' name='fromDate[]' value="+fromDate+"><input type='hidden' name='toDate[]' value="+toDate+"><input type='hidden' name='description[]' value="+description+"><th scope='row'>"+i+"</th><td>"+profession+"</td><td>"+company+"</td><td>"+fromDate+"</td><td>"+toDate+"</td><td>"+description+"</td><td><button id=btn_add_exp class='btn btn-small btn-danger'>x</button></td></tr>");                   
                                   
    
            $("option:selected").prop("selected", false);

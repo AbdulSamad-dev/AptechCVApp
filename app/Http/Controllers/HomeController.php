@@ -69,7 +69,28 @@ class HomeController extends Controller
         {
           
            // $student_update = Student::where('user_id',1)->update(['is_build'=>1]);
-       // dd($request->all());
+          // dd($request->all());
+            //dd(count($request->company));
+           for($i=0;$i<count($request->company); $i++)
+           {
+
+            $exp = Experience::create([
+                'user_id'   =>    $student->id,
+                'profession'=> $request->profession[$i],
+                'company'   =>   $request->company[$i],
+                'from'      =>   $request->fromDate[$i],
+                'to'        =>  $request->toDate[$i],
+                'description'   => $request->pro_description[$i]
+                ]);
+           }
+
+           dd($exp);
+          
+        
+        
+          
+          
+            dd($request->all());
             $exeperience->user_id       = $user->id;
             $exeperience->profession   = $request->input('profession');
             $exeperience->company       = $request->input('company');
@@ -77,6 +98,8 @@ class HomeController extends Controller
             $exeperience->to            = $request->input('to');
             $exeperience->description   = $request->input('description');  
             $experience_data = $exeperience->save();
+           
+           
             dd($experience_data);
             dd("user exists row updated!".$student_update);
 
