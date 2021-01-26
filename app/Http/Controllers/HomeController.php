@@ -55,17 +55,31 @@ class HomeController extends Controller
     }
     public function insert_cv(Request $request)
     {
-        $student = new Student();
+
+        $user   =   User::find(Auth::user()->id);
+
+        
+      // $student = new Student();
         $education = new Education();
         $exeperience = new  Experience();
-
+        $student= Student::find(Auth::user()->id);
         $student_data = Student::find(Auth::user()->id);
       
         if(!empty($student_data->user_id) && $student_data->is_build==0)
         {
           
-            $student_update = Student::where('user_id',1)->update(['is_build'=>1]);
+           // $student_update = Student::where('user_id',1)->update(['is_build'=>1]);
+       // dd($request->all());
+            $exeperience->user_id       = $user->id;
+            $exeperience->profession   = $request->input('profession');
+            $exeperience->company       = $request->input('company');
+            $exeperience->from          = $request->input('from');
+            $exeperience->to            = $request->input('to');
+            $exeperience->description   = $request->input('description');  
+            $experience_data = $exeperience->save();
+            dd($experience_data);
             dd("user exists row updated!".$student_update);
+
 
               /* //user data is alreday available here you can upate data or leave this data as it is//
                 $imgfile            = $request->file('profile_image');

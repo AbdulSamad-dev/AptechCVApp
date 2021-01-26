@@ -172,7 +172,7 @@
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label" for="still_studing">Are you still studing?</label>&nbsp;&nbsp;
-                                    <input class="form-check-input" type="checkbox" name="still_studing" id="still_studing" value="option1">
+                                    <input class="form-check-input" type="checkbox" name="still_studing" id="still_studing" value="In progress">
                                  </div>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <button name="add_education" id="add_education" class="btn btn-success">+</button>
                             </div>
@@ -207,10 +207,10 @@
                                 <label for="">Profession</label>
                                 <select name="profession" id="profession" class="form-control" required>
                                     <option value="">Choose...</option>
-                                    <option value="1">Web Developer</option>
-                                    <option value="2">Android Developer</option>
-                                    <option value="3">Graphic Designer</option>
-                                    <option value="4">Web Designer</option>
+                                    <option value="Web Developer">Web Developer</option>
+                                    <option value="Android Developer">Android Developer</option>
+                                    <option value="Graphic Designer">Graphic Designer</option>
+                                    <option value="Web Designer">Web Designer</option>
                                 </select>
                             </div>  
                         </div>
@@ -242,7 +242,7 @@
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label" for="still_studing">Are you still working?</label>&nbsp;&nbsp;
-                                    <input class="form-check-input" type="checkbox" name="still_working" id="still_working" value="option1">
+                                    <input class="form-check-input" type="checkbox" name="to" id="still_working" value="presently working">
                                  </div>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <button name="add_experience" id="add_experience" class="btn btn-success">+</button>
                             </div>
@@ -287,7 +287,7 @@
 <script>
     $(function(){
 
-       
+    
 
         $("#still_studing").change(function() {
 
@@ -332,7 +332,7 @@
                 return false;
             }
   
-            $("#eucation_row").append("<tr><input type='hidden' name=education[certificate"+i+"] value="+certificate+"><input type='hidden' name=education[institute"+i+"] value="+institute+"><input type='hidden' name=education[passing_year"+i+"] value="+passing_year+"><th scope='row'>"+i+"</th><td>"+certificate+"</td><td>"+institute+"</td><td>"+passing_year+"</td><td><button id=btn_add_edu class='btn btn-small btn-danger'>x</button></td></tr>");                   
+            $("#eucation_row").append("<tr><input type='hidden' name=certificate[] value="+certificate+"><input type='hidden' name=institute[] value="+institute+"><input type='hidden' name=passing_year[] value="+passing_year+"><th scope='row'>"+i+"</th><td>"+certificate+"</td><td>"+institute+"</td><td>"+passing_year+"</td><td><button id=btn_add_edu class='btn btn-small btn-danger'>x</button></td></tr>");                   
                                   i++;
              $("option:selected").prop("selected", false)
             $('#institute').val('');
