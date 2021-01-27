@@ -34,6 +34,15 @@ class Student extends Model
     public function user()
     {
 
-        return $this->belongsTo('User');
+        return $this->belongsTo(User::class);
+    }
+
+    public function experiences()
+    {
+        return $this->hasMany(Education::class);
+    }
+    public function educations()
+    {
+        return $this->hasMany(Experience::class);
     }
 }

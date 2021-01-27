@@ -17,7 +17,7 @@ class CreateEducationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
 
-            $table->text('objective');
+           
             $table->string('certificate');
             $table->string('institute');
             $table->string('passing_year');

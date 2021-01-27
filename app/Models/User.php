@@ -41,10 +41,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Student()
+    public function students()
     {
-
-        return $this->hasOne('App\Student');
-
+        return $this->hasMany(Student::class);
     }
 }

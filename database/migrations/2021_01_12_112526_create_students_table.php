@@ -17,7 +17,6 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
 
-
             $table->string('student_id',200)->nullable();
             $table->string('batch_id',100)->nullable();
             $table->string('faculty_name',200)->nullable();
@@ -31,7 +30,7 @@ class CreateStudentsTable extends Migration
             $table->string("cv_path",100)->nullable();
             $table->boolean("is_uploaded")->default(0);
             $table->boolean("is_build")->default(0);
-
+            $table->text('objective')->nullable();
             //$table->bigInteger('user_id');
             // $table->foreign('user_id')->references('id')->on('users');  
             $table->timestamps();

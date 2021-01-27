@@ -26,8 +26,8 @@ Auth::routes();
 
 Route::get('/home','HomeController@index')->name('home');
 
-Route::get('/create_cv',  'HomeController@create_cv')->name('create_cv');
-Route::post('/create_cv',  'HomeController@insert_cv')->name('insert_cv');
+Route::get('/create_cv',  'StudentController@create_cv')->name('create_cv');
+Route::post('/create_cv',  'StudentController@insert_cv')->name('insert_cv');
 
-Route::get('/upload_cv','HomeController@upload_cv')->name('upload_cv');
-Route::post('/upload_cv1',  'HomeController@upload_cv1')->name('upload_cv1');
+Route::get('/upload_cv','StudentController@upload_cv')->name('upload_cv');
+Route::post('/upload_cv1',  'StudentController@upload_cv1')->name('upload_cv1');

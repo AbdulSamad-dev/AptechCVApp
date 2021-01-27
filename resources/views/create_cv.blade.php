@@ -17,7 +17,10 @@
                 </div>
                     <h1 class="text-center">Curriculum Vitae CV</h1>
                     <p><strong>Note:   * field are required</strong></p>
-                    <h6>Career Objective</h6>
+                    
+                    <h5>Personal Information</h5><hr/>
+                    <form action="{{ route('insert_cv')}}" method="post" enctype="multipart/form-data">
+                        <h6>Career Objective</h6>
                     <div class="row">
                         <div class="col-md-12"> 
                             <div class="form-group">
@@ -25,8 +28,6 @@
                             </div>
                          </div>
                     </div>
-                    <h5>Personal Information</h5><hr/>
-                    <form action="{{ route('insert_cv')}}" method="post" enctype="multipart/form-data">
                     @csrf
                         <div class="row">
                         <div class="col-sm-3">
