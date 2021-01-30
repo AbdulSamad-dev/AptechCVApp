@@ -42,7 +42,10 @@ class HomeController extends Controller
         }
        
     }
-
+    public function cv_build()
+    {
+        dd("cv builder");
+    }
   
 
 }
